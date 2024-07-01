@@ -1,0 +1,1134 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Users and Cars API",
+    "version": "1.0.0",
+    "description": "API for managing users and cars"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8000"
+    }
+  ],
+  "paths": {
+    "/users": {
+      "get": {
+        "tags": ["Users"],
+        "summary": "Get all users",
+        "responses": {
+          "200": {
+            "description": "Get all users",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "types": "object",
+                  "properties": {
+                    "status": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "User Available"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "example": "ed52f847-0c53-428c-8f34-b01cfd4d2635"
+                          },
+                          "username": {
+                            "type": "string",
+                            "example": "superadmin"
+                          },
+                          "email": {
+                            "type": "string",
+                            "example": "superadmin@superadmin.com"
+                          },
+                          "password": {
+                            "type": "string",
+                            "example": "superadmin"
+                          },
+                          "role": {
+                            "type": "string",
+                            "example": "admin"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error message",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "types": "object",
+                  "properties": {
+                    "status": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Internal server error"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/register": {
+      "post": {
+        "tags": ["Users"],
+        "summary": "Register User",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "types": "object",
+                "properties": {
+                  "username": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "email": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "password": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "role": {
+                    "type": "string",
+                    "example": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Register User",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "types": "object",
+                  "properties": {
+                    "status": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Register User Successfully"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "example": "ed52f847-0c53-428c-8f34-b01cfd4d2635"
+                          },
+                          "username": {
+                            "type": "string",
+                            "example": "superadmin"
+                          },
+                          "email": {
+                            "type": "string",
+                            "example": "superadmin@superadmin.com"
+                          },
+                          "password": {
+                            "type": "string",
+                            "example": "superadmin"
+                          },
+                          "role": {
+                            "type": "string",
+                            "example": "admin"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Error message",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "types": "object",
+                  "properties": {
+                    "status": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Access forbidden"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error message",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "types": "object",
+                  "properties": {
+                    "status": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Internal server error"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/login": {
+      "post": {
+        "tags": ["Users"],
+        "summary": "Login User",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "types": "object",
+                "properties": {
+                  "username": {
+                    "type": "string",
+                    "example": "superadmin"
+                  },
+                  "password": {
+                    "type": "string",
+                    "example": "superadmin"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Login User",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "types": "object",
+                  "properties": {
+                    "status": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Login User Successfully"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "example": "ed52f847-0c53-428c-8f34-b01cfd4d2635"
+                          },
+                          "username": {
+                            "type": "string",
+                            "example": "superadmin"
+                          },
+                          "email": {
+                            "type": "string",
+                            "example": "superadmin@superadmin.com"
+                          },
+                          "password": {
+                            "type": "string",
+                            "example": "superadmin"
+                          },
+                          "role": {
+                            "type": "string",
+                            "example": "admin"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Error message",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "types": "object",
+                  "properties": {
+                    "status": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "User not found"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Error message",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "types": "object",
+                  "properties": {
+                    "status": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Wrong Password"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error message",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "types": "object",
+                  "properties": {
+                    "status": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Internal server error"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/{id}": {
+      "put": {
+        "tags": ["Users"],
+        "summary": "Update User",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "types": "object",
+                "properties": {
+                  "username": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "email": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "password": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "role": {
+                    "type": "string",
+                    "example": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Update User",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "types": "object",
+                  "properties": {
+                    "status": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Update User Successfully"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "example": "ed52f847-0c53-428c-8f34-b01cfd4d2635"
+                          },
+                          "username": {
+                            "type": "string",
+                            "example": "superadmin"
+                          },
+                          "email": {
+                            "type": "string",
+                            "example": "superadmin@superadmin.com"
+                          },
+                          "password": {
+                            "type": "string",
+                            "example": "superadmin"
+                          },
+                          "role": {
+                            "type": "string",
+                            "example": "admin"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Error message",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "types": "object",
+                  "properties": {
+                    "status": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Update only superadmin can update user"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Error message",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "types": "object",
+                  "properties": {
+                    "status": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "User not found"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error message",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "types": "object",
+                  "properties": {
+                    "status": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Internal server error"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Users"],
+        "summary": "Delete user",
+        "responses": {
+          "200": {
+            "description": "Delete user",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "types": "object",
+                  "properties": {
+                    "status": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Delete user Successfully"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error message",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "types": "object",
+                  "properties": {
+                    "status": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Internal server error"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/me": {
+      "get": {
+        "tags": ["Users"],
+        "summary": "Get Current User",
+        "responses": {
+          "200": {
+            "description": "Get Current users",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "types": "object",
+                  "properties": {
+                    "status": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "User Available"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "example": "ed52f847-0c53-428c-8f34-b01cfd4d2635"
+                          },
+                          "username": {
+                            "type": "string",
+                            "example": "superadmin"
+                          },
+                          "email": {
+                            "type": "string",
+                            "example": "superadmin@superadmin.com"
+                          },
+                          "password": {
+                            "type": "string",
+                            "example": "superadmin"
+                          },
+                          "role": {
+                            "type": "string",
+                            "example": "admin"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error message",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "types": "object",
+                  "properties": {
+                    "status": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Internal server error"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/cars": {
+      "get": {
+        "tags": ["Cars"],
+        "summary": "Get cars",
+        "responses": {
+          "200": {
+            "description": "Get all cars",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "types": "object",
+                  "properties": {
+                    "status": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Cars Available"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "example": "ed52f847-0c53-428c-8f34-b01cfd4d2635"
+                          },
+                          "merk": {
+                            "type": "string",
+                            "example": "Toyota"
+                          },
+                          "type": {
+                            "type": "string",
+                            "example": "Yaris"
+                          },
+                          "year": {
+                            "type": "integer",
+                            "example": "2020"
+                          },
+                          "status": {
+                            "type": "string",
+                            "example": "available"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error message",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "types": "object",
+                  "properties": {
+                    "status": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Internal server error"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Cars"],
+        "summary": "Create car",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "types": "object",
+                "properties": {
+                  "merk": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "type": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "year": {
+                    "type": "integer",
+                    "example": "integer"
+                  },
+                  "status": {
+                    "type": "string",
+                    "example": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Create car successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "types": "object",
+                  "properties": {
+                    "status": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Create User Successfully"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "example": "ed52f847-0c53-428c-8f34-b01cfd4d2635"
+                          },
+                          "merk": {
+                            "type": "string",
+                            "example": "Toyota"
+                          },
+                          "type": {
+                            "type": "string",
+                            "example": "Yaris"
+                          },
+                          "year": {
+                            "type": "integer",
+                            "example": "2020"
+                          },
+                          "status": {
+                            "type": "string",
+                            "example": "available"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Error message",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "types": "object",
+                  "properties": {
+                    "status": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Access forbidden"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error message",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "types": "object",
+                  "properties": {
+                    "status": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Internal server error"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/cars/{id}": {
+      "put": {
+        "tags": ["Cars"],
+        "summary": "Update car",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "types": "object",
+                "properties": {
+                  "merk": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "type": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "year": {
+                    "type": "integer",
+                    "example": "integer"
+                  },
+                  "status": {
+                    "type": "string",
+                    "example": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Update car successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "types": "object",
+                  "properties": {
+                    "status": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Update User Successfully"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "example": "ed52f847-0c53-428c-8f34-b01cfd4d2635"
+                          },
+                          "merk": {
+                            "type": "string",
+                            "example": "Toyota"
+                          },
+                          "type": {
+                            "type": "string",
+                            "example": "Yaris"
+                          },
+                          "year": {
+                            "type": "integer",
+                            "example": "2020"
+                          },
+                          "status": {
+                            "type": "string",
+                            "example": "available"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Error message",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "types": "object",
+                  "properties": {
+                    "status": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Access forbidden"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Error message",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "types": "object",
+                  "properties": {
+                    "status": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Car not found"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error message",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "types": "object",
+                  "properties": {
+                    "status": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Internal server error"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Cars"],
+        "summary": "Delete car",
+        "responses": {
+          "200": {
+            "description": "Delete car",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "types": "object",
+                  "properties": {
+                    "status": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Delete car Successfully"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Error message",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "types": "object",
+                  "properties": {
+                    "status": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Access forbidden"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Error message",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "types": "object",
+                  "properties": {
+                    "status": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Car not found"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error message",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "types": "object",
+                  "properties": {
+                    "status": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Internal server error"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/cars/restore/{id}": {
+      "post": {
+        "tags": ["Cars"],
+        "summary": "Restore car",
+        "responses": {
+          "200": {
+            "description": "Restore car",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "types": "object",
+                  "properties": {
+                    "status": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Restore car Successfully"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Error message",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "types": "object",
+                  "properties": {
+                    "status": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Access forbidden"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Error message",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "types": "object",
+                  "properties": {
+                    "status": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Car not found"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error message",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "types": "object",
+                  "properties": {
+                    "status": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Internal server error"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
